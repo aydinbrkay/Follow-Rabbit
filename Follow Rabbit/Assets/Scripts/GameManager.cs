@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
             else{
                 Debug.Log("Route Finished");
                 Application.Quit();
-                UnityEditor.EditorApplication.isPlaying = false;
+                //UnityEditor.EditorApplication.isPlaying = false;
             }
         }
     }
