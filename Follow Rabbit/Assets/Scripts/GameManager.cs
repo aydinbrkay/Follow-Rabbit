@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour
     private int routeIndex = 0;
     private int routeLength = 5;
     private int boardEdgeLength = 7;
+    private GameFinishedScreenManager gameFinishedScreenManager;
+    void Awake() {
+        gameFinishedScreenManager = GetComponent<GameFinishedScreenManager>();
+        Time.timeScale = 1;//After restart
+    }
 
     void Start() {
         GenerateBoard(boardEdgeLength);
@@ -44,8 +49,8 @@ public class GameManager : MonoBehaviour
             }
             else{
                 Debug.Log("Route Finished");
-                Application.Quit();
-                //UnityEditor.EditorApplication.isPlaying = false;
+                Time.timeScale = 0;
+                gameFinishedScreenManager.ShowRouteSuccessScreen();
             }
         }
     }
@@ -83,7 +88,8 @@ public class GameManager : MonoBehaviour
             }
             else{
                 Debug.Log("Out of route");
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                Time.timeScale = 0;
+                gameFinishedScreenManager.ShowRouteFailureScreen();
             }
         }
         return false;
@@ -102,4 +108,5 @@ public class GameManager : MonoBehaviour
         }
         return false;
     }
+
 }

@@ -27,8 +27,8 @@ public class Movement : MonoBehaviour
 
     private bool CheckIfMoveLegit(Vector3 moveDirection){
         Vector3 proposedPosition = transform.position + moveDirection;
-        if(proposedPosition.x > 0 && proposedPosition.x < boardEdgeLength && 
-        proposedPosition.z > 0 && proposedPosition.z < boardEdgeLength){
+        if(proposedPosition.x > 0 && proposedPosition.x < boardEdgeLength - 1&& 
+        proposedPosition.z > 0 && proposedPosition.z < boardEdgeLength - 1){
             return true;
         }
         else{
